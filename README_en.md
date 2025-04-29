@@ -29,7 +29,9 @@ This project is a subsidiary project of the Shenyang Metro Resource Pack project
 
 # Usage
 
-Please refer to the [documentation](docs/README.md)
+To use this pack, `Minecraft Transit Railway 4.0+`, `Joban Client Mod 2.0+` mod is needed.
+
+For more information please refer to the [documentation](docs/README.md)
 
 # Development
 

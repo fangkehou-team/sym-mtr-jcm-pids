@@ -29,11 +29,9 @@
 
 # 使用
 
-请前往
+本项目依赖 `Minecraft Transit Railway 4.0+`, `Joban Client Mod 2.0+` 模组。
 
-本项目需要
-
-敬请参阅[文档](docs/README.md)
+更多信息敬请参阅[文档](docs/README.md)
 
 # 开发
 
@@ -59,6 +57,6 @@ make clean
 
 ## LICENSE
 
-本项目除沈阳地铁logo文件（assets/jsblock/custom_directory/sym_logo.png），方正粗倩简体字体文件（PIDS_image/FZCQJW.ttf）外应遵循Attribution-NonCommercial-ShareAlike 4.0 International协议，上述文件版权归属请联系相应版权方
+本项目除沈阳地铁logo文件（assets/jsblock/custom_directory/sym_logo.png），方正粗倩简体字体文件（PIDS_image/FZCQJW.ttf）外应遵循CC Attribution-NonCommercial-ShareAlike 4.0 International协议，上述文件版权归属请联系相应版权方
 
 [LICENSE文件](LICENSE)
