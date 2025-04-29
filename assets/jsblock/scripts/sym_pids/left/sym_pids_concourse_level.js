@@ -1,0 +1,248 @@
+include(Resources.id("jsblock:scripts/pids_util.js"));
+include(Resources.id("jsblock:scripts/sym_pids/sym_pids_utils.js"))
+
+let noto_sans_fonts = Resources.getSystemFont("Noto Sans")
+
+function create(ctx, state, pids) {
+
+    state.pids_size = {
+        width: pids.width,
+        height: pids.height
+    }
+
+    let config = fetchConfig(pids)
+
+    if (config.custom_message[0] != null && config.custom_message[0] != "") {
+        config.logo.path = config.custom_message[0]
+    }
+
+    if (config.custom_message[1] != null && config.custom_message[1] != "") {
+        config.text.welcome = "" + config.custom_message[1]
+    }
+
+    if (config.custom_message[2] != null && config.custom_message[2] != "") {
+        config.text.announcement = "" + config.custom_message[2]
+    }
+
+    if (config.custom_message[3] != null && config.custom_message[3] != "") {
+        let video_detail_custom = config.custom_message[3].split("|")
+        if (video_detail_custom.length() > 1) {
+            config.video.size = parseInt(video_detail_custom[0])
+            config.video.path = "" + video_detail_custom[1]
+        }
+        if (video_detail_custom.length() > 2) {
+            config.video.rate = parseInt(video_detail_custom[1])
+            config.video.path = "" + video_detail_custom[2]
+        }
+    }
+
+    state.config = config;
+}
+
+function renderVideo(ctx, pids_size, video, frame) {
+    Texture.create("Video")
+        .texture(video.path.replace(/{}/g, frame))
+        .pos(calculateWidth(pids_size, 640), 0)
+        .size(calculateWidth(pids_size, 1280), calculateHeight(pids_size, 930))
+        .draw(ctx);
+}
+
+function drawArriving(ctx, pids_size, eta, height_start) {
+    if (eta > 0) {
+        Text.create("arrived_chinese")
+            .text(eta + "分钟/Min")
+            .color(0xffffff)
+            .scale(1)
+            .centerAlign()
+            .pos(calculateCenterWidth(pids_size, 208.949, 222.101), calculateHeight(pids_size, height_start + 17.679))
+            .size(calculateWidth(pids_size, 295.035), calculateHeight(pids_size, 64.064))
+            .scaleXY()
+            .draw(ctx);
+
+    } else {
+        Text.create("arrived_chinese")
+            .text("已经到达")
+            .color(0xffffff)
+            .scale(1)
+            .centerAlign()
+            .pos(calculateCenterWidth(pids_size, 208.949, 222.101), calculateHeight(pids_size, height_start))
+            .size(calculateWidth(pids_size, 295.035), calculateHeight(pids_size, 57.856))
+            .scaleXY()
+            .draw(ctx);
+
+        Text.create("arrived_english")
+            .text("Arrived")
+            .color(0xffffff)
+            .scale(1)
+            .centerAlign()
+            .pos(calculateCenterWidth(pids_size, 208.949, 222.101), calculateHeight(pids_size, height_start + 69.892))
+            .size(calculateWidth(pids_size, 139.307), calculateHeight(pids_size, 29.531))
+            .scaleXY()
+            .draw(ctx);
+    }
+}
+
+function render(ctx, state, pids) {
+    let pids_size = state.pids_size
+
+    if (state.config == null) {
+        create(ctx, state, pids)
+    }
+
+    //render video
+    if (state.lastVideoUpdated == null) {
+        state.lastVideoUpdated = 0
+        state.lastVideoFrame = 0
+    }
+
+    let video_config = state.config.video;
+    let currentTimeMillis = Timing.currentTimeMillis()
+    if (currentTimeMillis - state.lastVideoUpdated >= 1000 / video_config.rate) {
+        state.lastVideoUpdated = currentTimeMillis
+        state.lastVideoFrame = (state.lastVideoFrame + 1) % video_config.size
+    }
+
+    renderVideo(ctx, pids_size, video_config, state.lastVideoFrame + 1)
+
+    //Background
+    Texture.create("Background")
+        .texture("jsblock:custom_directory/sym_pids/left/pids_concourse_level.png")
+        .size(pids.width, pids.height)
+        .draw(ctx);
+
+    // time
+    let time = calculateTime();
+
+    Text.create("time")
+        .text(time.time)
+        .color(0xffffff)
+        .scale(1)
+        .centerAlign()
+        .pos(calculateCenterWidth(pids_size, 95.456, 449.089), calculateHeight(pids_size, 50.000))
+        .size(calculateWidth(pids_size, 449.089), calculateHeight(pids_size, 73.656))
+        .scaleXY()
+        .draw(ctx);
+
+
+    let arrival_result = fetchTwoFirstArrivals(pids.arrivals())
+    let arrival_first = arrival_result[0];
+    if (arrival_first != null) {
+        // station names
+        let station = arrival_first.destination();
+
+        let main_station_name = "";
+        let extra_station_name = "";
+        if (TextUtil.isCjk(station)) {
+            main_station_name = TextUtil.getCjkParts(station);
+            extra_station_name = TextUtil.getNonCjkParts(station);
+        } else {
+            let station_names = TextUtil.getNonExtraParts(station).split("|");
+            main_station_name = station_names[0];
+            if (station_names.length() > 1) {
+                extra_station_name = station_names[1];
+            }
+        }
+
+        Text.create("main_station_name")
+            .text(main_station_name)
+            .color(0xffffff)
+            .scale(1)
+            .centerAlign()
+            .pos(calculateCenterWidth(pids_size, 208.949, 222.101), calculateHeight(pids_size, 224.946))
+            .size(calculateWidth(pids_size, 507.157), calculateHeight(pids_size, 68.843))
+            .scaleXY()
+            .draw(ctx);
+
+        Text.create("extra_station_name")
+            .text(extra_station_name)
+            .color(0xffffff)
+            .scale(1)
+            .centerAlign()
+            .pos(calculateCenterWidth(pids_size, 137.216, 365.568), calculateHeight(pids_size, 309.658))
+            .size(calculateWidth(pids_size, 507.157), calculateHeight(pids_size, 40.480))
+            .scaleXY()
+            .draw(ctx);
+
+        let eta = calculateArriving(arrival_first.arrivalTime());
+        drawArriving(ctx, pids_size, eta, 438.433)
+    }
+
+    let arrival_second = arrival_result[1];
+    if (arrival_second != null) {
+        // station names
+        let station = arrival_second.destination();
+
+        let main_station_name = "";
+        let extra_station_name = "";
+        if (TextUtil.isCjk(station)) {
+            main_station_name = TextUtil.getCjkParts(station);
+            extra_station_name = TextUtil.getNonCjkParts(station);
+        } else {
+            let station_names = TextUtil.getNonExtraParts(station).split("|");
+            main_station_name = station_names[0];
+            if (station_names.length() > 1) {
+                extra_station_name = station_names[1];
+            }
+        }
+
+        Text.create("main_station_name")
+            .text(main_station_name)
+            .color(0xffffff)
+            .scale(1)
+            .centerAlign()
+            .pos(calculateCenterWidth(pids_size, 208.949, 222.101), calculateHeight(pids_size, 622.172))
+            .size(calculateWidth(pids_size, 507.157), calculateHeight(pids_size, 68.843))
+            .scaleXY()
+            .draw(ctx);
+
+        Text.create("extra_station_name")
+            .text(extra_station_name)
+            .color(0xffffff)
+            .scale(1)
+            .centerAlign()
+            .pos(calculateCenterWidth(pids_size, 137.216, 365.568), calculateHeight(pids_size, 706.884))
+            .size(calculateWidth(pids_size, 507.157), calculateHeight(pids_size, 40.480))
+            .scaleXY()
+            .draw(ctx);
+
+        let eta = calculateArriving(arrival_second.arrivalTime());
+        drawArriving(ctx, pids_size, eta, 824.649)
+    }
+
+
+    // draw text
+    let text_config = state.config.text;
+    // top roll
+    Text.create("top_row")
+        .text(text_config.welcome)
+        .color(0xffffff)
+        .scale(0.6)
+        // .centerAlign()
+        .pos(calculateWidth(pids_size, 848.634), calculateHeight(pids_size, 43.404))
+        .size(calculateWidth(pids_size, 835.013) / 0.6, calculateHeight(pids_size, 49.280))
+        .marquee()
+        .draw(ctx);
+
+    // bottom roll
+    Text.create("bottom_row")
+        .text(text_config.announcement)
+        .color(0xffffff)
+        .scale(0.8)
+        // .centerAlign()
+        .pos(calculateWidth(pids_size, 5), calculateHeight(pids_size, 941.075))
+        .size(calculateWidth(pids_size, 1920 - 469.539) / 0.8, calculateHeight(pids_size, 95.907))
+        .marquee()
+        .draw(ctx);
+
+    // logo
+    let logo_config = state.config.logo;
+    Texture.create("SYMLogo")
+        .texture(logo_config.path)
+        .pos(calculateWidth(pids_size, 1535.489), calculateHeight(pids_size, 941.075))
+        .size(calculateWidth(pids_size, 379.539), calculateHeight(pids_size, 115.907))
+        .draw(ctx);
+
+}
+
+function dispose(ctx, state, pids) {
+}

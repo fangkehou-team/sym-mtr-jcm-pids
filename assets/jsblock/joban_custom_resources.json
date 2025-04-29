@@ -1,0 +1,74 @@
+{
+	"pids_images": [
+		{
+			"id": "sym_pids_concourse_level_left",
+			"name": "SYM Concourse Level (Left Sidebar) 沈阳地铁站厅样式(侧栏在左侧)",
+			"thumbnail": "jsblock:custom_directory/sym_pids/left/pids_concourse_level.png",
+			"background": "jsblock:custom_directory/sym_pids/left/pids_concourse_level.png",
+			"scriptFiles": ["jsblock:scripts/sym_pids/left/sym_pids_concourse_level.js"]
+		},
+		{
+			"id": "sym_pids_concourse_level_destination_left",
+			"name": "SYM Concourse Level Destination (Left Sidebar) 沈阳地铁终点站厅样式(侧栏在左侧)",
+			"thumbnail": "jsblock:custom_directory/sym_pids/left/pids_concourse_level_destination.png",
+			"background": "jsblock:custom_directory/sym_pids/left/pids_concourse_level_destination.png",
+			"scriptFiles": ["jsblock:scripts/sym_pids/left/sym_pids_concourse_level_destination.js"]
+		},
+		{
+			"id": "sym_pids_platform_level_after4_left",
+			"name": "SYM Platform Level After4 (Left Sidebar) 沈阳地铁站台样式（四号线及以后）(侧栏在左侧)",
+			"thumbnail": "jsblock:custom_directory/sym_pids/left/pids_platform_level_after4.png",
+			"background": "jsblock:custom_directory/sym_pids/left/pids_platform_level_after4.png",
+			"scriptFiles": ["jsblock:scripts/sym_pids/left/sym_pids_platform_level_after4.js"]
+		},
+		{
+			"id": "sym_pids_platform_level_before4_left",
+			"name": "SYM Platform Level Before4 (Left Sidebar) 沈阳地铁站台样式（四号线以前）(侧栏在左侧)",
+			"thumbnail": "jsblock:custom_directory/sym_pids/left/pids_platform_level_before4.png",
+			"background": "jsblock:custom_directory/sym_pids/left/pids_platform_level_before4.png",
+			"scriptFiles": ["jsblock:scripts/sym_pids/left/sym_pids_platform_level_before4.js"]
+		},
+		{
+			"id": "sym_pids_platform_level_destination_left",
+			"name": "SYM Platform Level Destination (Left Sidebar) 沈阳地铁铁终点站台样式(侧栏在左侧)",
+			"thumbnail": "jsblock:custom_directory/sym_pids/left/pids_platform_level_destination.png",
+			"background": "jsblock:custom_directory/sym_pids/left/pids_platform_level_destination.png",
+			"scriptFiles": ["jsblock:scripts/sym_pids/left/sym_pids_platform_level_destination.js"]
+		},
+		{
+			"id": "sym_pids_concourse_level_right",
+			"name": "SYM Concourse Level (Right Sidebar)沈阳地铁站厅样式(侧栏在右侧)",
+			"thumbnail": "jsblock:custom_directory/sym_pids/right/pids_concourse_level.png",
+			"background": "jsblock:custom_directory/sym_pids/right/pids_concourse_level.png",
+			"scriptFiles": ["jsblock:scripts/sym_pids/right/sym_pids_concourse_level.js"]
+		},
+		{
+			"id": "sym_pids_concourse_level_destination_right",
+			"name": "SYM Concourse Level Destination (Right Sidebar)沈阳地铁终点站厅样式(侧栏在右侧)",
+			"thumbnail": "jsblock:custom_directory/sym_pids/right/pids_concourse_level_destination.png",
+			"background": "jsblock:custom_directory/sym_pids/right/pids_concourse_level_destination.png",
+			"scriptFiles": ["jsblock:scripts/sym_pids/right/sym_pids_concourse_level_destination.js"]
+		},
+		{
+			"id": "sym_pids_platform_level_after4_right",
+			"name": "SYM Platform Level After4 (Right Sidebar)沈阳地铁站台样式（四号线及以后）(侧栏在右侧)",
+			"thumbnail": "jsblock:custom_directory/sym_pids/right/pids_platform_level_after4.png",
+			"background": "jsblock:custom_directory/sym_pids/right/pids_platform_level_after4.png",
+			"scriptFiles": ["jsblock:scripts/sym_pids/right/sym_pids_platform_level_after4.js"]
+		},
+		{
+			"id": "sym_pids_platform_level_before4_right",
+			"name": "SYM Platform Level Before4 (Right Sidebar)沈阳地铁站台样式（四号线以前）(侧栏在右侧)",
+			"thumbnail": "jsblock:custom_directory/sym_pids/right/pids_platform_level_before4.png",
+			"background": "jsblock:custom_directory/sym_pids/right/pids_platform_level_before4.png",
+			"scriptFiles": ["jsblock:scripts/sym_pids/right/sym_pids_platform_level_before4.js"]
+		},
+		{
+			"id": "sym_pids_platform_level_destination_right",
+			"name": "SYM Platform Level Destination (Right Sidebar)沈阳地铁铁终点站台样式(侧栏在右侧)",
+			"thumbnail": "jsblock:custom_directory/sym_pids/right/pids_platform_level_destination.png",
+			"background": "jsblock:custom_directory/sym_pids/right/pids_platform_level_destination.png",
+			"scriptFiles": ["jsblock:scripts/sym_pids/right/sym_pids_platform_level_destination.js"]
+		}
+	]
+}

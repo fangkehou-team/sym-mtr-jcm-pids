@@ -1,0 +1,60 @@
+<p align="center">
+  <img src="pack.png" width="180px" alt="JCM Logo">
+</p>
+
+<h1 align="center">
+  SYM (Shenyang Metro) Resource Pack - PIDS
+</h1>
+
+<p align="center">
+  <a href="https://modrinth.com/resourcepack/sym-pids-pack">
+    <img alt="Available on Modrinth" height="50" src="https://cdn.jsdelivr.net/npm/@intergrav/devins-badges@3/assets/cozy/available/modrinth_vector.svg">
+  </a>
+</p>
+
+[中文](README.md) / English
+
+# Introduction
+
+This project is a subsidiary project of the Shenyang Metro Resource Pack project, responsible for recreating all PIDS within the Shenyang Metro system using MTR4 and JCM modules.
+
+# Screenshots
+
+![2025-04-29_10.29.58.png](Screenshots/2025-04-29_10.29.58.png)
+![2025-04-29_10.30.09.png](Screenshots/2025-04-29_10.30.09.png)
+![2025-04-29_10.30.16.png](Screenshots/2025-04-29_10.30.16.png)
+![2025-04-29_10.30.21.png](Screenshots/2025-04-29_10.30.21.png)
+![2025-04-29_10.30.44.png](Screenshots/2025-04-29_10.30.44.png)
+![2025-04-29_10.30.50.png](Screenshots/2025-04-29_10.30.50.png)
+
+# Usage
+
+Please refer to the [documentation](docs/README.md)
+
+# Development
+
+This project is a pure JavaScript project and does not require setting up a scaffold.
+
+The project provides a `Makefile` for testing and packaging the resource pack. 
+
+If you don't know what `make` or `Makefile` is, just ignore it.
+
+Before using the `Makefile`, please modify the file path part of `TARGET_DIR=/demo/.minecraft/resourcepack` to your Minecraft resource pack folder.
+
+The available commands are as follows:
+```shell
+# Copy all contents of this project to the Minecraft resource pack folder
+make
+
+# Package the resource pack files into SYM_PIDS-Pack.zip
+make release
+
+# Clean up the packaged files and the Minecraft resource pack folder
+make clean
+```
+
+## LICENSE
+
+This project, except for the Shenyang Metro logo file (assets/jsblock/custom_directory/sym_logo.png) and the FZCQJW.ttf font file (PIDS_image/FZCQJW.ttf), should comply with the Attribution-NonCommercial-ShareAlike 4.0 International license. For the copyright of the aforementioned files, please contact the respective copyright holders.
+
+[LICENSE file](LICENSE)
