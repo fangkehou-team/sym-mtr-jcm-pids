@@ -37,6 +37,10 @@
 
 本项目为纯js项目，无须搭建脚手架。
 
+本项目中除专有图片外所有图片均使用svg导出，svg文件包含在PIDS_image文件夹中，你可以使用`Inkscape`打开或编辑，你可能需要安装`方正粗倩简体`方能正确显示部分文字样式
+
+`方正粗倩简体`字体文件已经包含在`PIDS_image/FZCQJW.ttf`中，字体不可商用。
+
 本项目提供了一个`Makefile`文件用于测试和打包资源包。
 
 如果你不知道什么是`make`，`Makefile`，直接忽略即可。
@@ -57,6 +61,6 @@ make clean
 
 ## LICENSE
 
-本项目除沈阳地铁logo文件（assets/jsblock/custom_directory/sym_logo.png），方正粗倩简体字体文件（PIDS_image/FZCQJW.ttf）外应遵循CC Attribution-NonCommercial-ShareAlike 4.0 International协议，上述文件版权归属请联系相应版权方
+本项目除沈阳地铁logo文件（`assets/jsblock/custom_directory/sym_logo.png`），方正粗倩简体字体文件（`PIDS_image/FZCQJW.ttf`），沈阳地铁相关视频素材（`assets/jsblock/custom_directory/sym_pids/sym_video`中的文件）外应遵循`知识共享 署名-非商业性使用-相同方式共享 4.0 国际`协议，上述文件版权归属请联系相应版权方
 
 [LICENSE文件](LICENSE)

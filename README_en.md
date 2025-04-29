@@ -37,6 +37,10 @@ For more information please refer to the [documentation](docs/README.md)
 
 This project is a pure JavaScript project and does not require setting up a scaffold.
 
+Except for proprietary images, all images in this project are exported as SVG and are included in the `PIDS_image` folder. You can use `Inkscape` to open or edit them. You may need to install the `FZCQJW` font to correctly display certain text styles.
+
+The `FZCQJW` font file is already included in `PIDS_image/FZCQJW.ttf`, note that the font is not for commercial use.
+
 The project provides a `Makefile` for testing and packaging the resource pack. 
 
 If you don't know what `make` or `Makefile` is, just ignore it.
@@ -57,6 +61,6 @@ make clean
 
 ## LICENSE
 
-This project, except for the Shenyang Metro logo file (assets/jsblock/custom_directory/sym_logo.png) and the FZCQJW.ttf font file (PIDS_image/FZCQJW.ttf), should comply with the Attribution-NonCommercial-ShareAlike 4.0 International license. For the copyright of the aforementioned files, please contact the respective copyright holders.
+This project, except for the Shenyang Metro logo file (`assets/jsblock/custom_directory/sym_logo.png`), the FZCQJW.ttf font file (`PIDS_image/FZCQJW.ttf`), and the Shenyang Metro video (files in `assets/jsblock/custom_directory/sym_pids/sym_video`), should comply with the `CC BY-NC-SA 4.0 International` license. For the copyright of the aforementioned files, please contact the respective copyright holders.
 
 [LICENSE file](LICENSE)
